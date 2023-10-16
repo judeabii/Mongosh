@@ -92,3 +92,15 @@ Deleting all students who do not have the key - "registrationDate"
 ```
 school> db.students.deleteMany({registrationDate:{$exists:false}})
 ```
+### Comparison Operators
+Find all students whose age is greater than or equal to 33
+```
+school> db.students.find({age:{$gte:33}})
+```
+```
+school> db.students.find({age:{$lte:32}})
+```
+Multiple comparision operators in one statement
+```
+school> db.students.find({gpa:{$gt:3,$lte:4}}, {name:true})
+```
