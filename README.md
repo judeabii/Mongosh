@@ -25,7 +25,6 @@ To view the documents:
 
 Inserting Many:
 ```school> db.students.insertMany([{name:"Patrick",age:22,gpa:2.7},{name:"Squidward",age:33,gpa:3.5}])```
-<<<<<<< HEAD
 
 All documents in the collection need not have the same keys. You can also store values as the date, null - for placeholder, array or list and nested document
 ```
@@ -47,5 +46,14 @@ You can limit the number of results obtained too, eg, onlt the top 2 youngest st
 ```
 school> db.students.find().sort({age:1}).limit(2)
 ```
-=======
->>>>>>> f4d6f301b7ac0d9f1ce6f0e9882e4e0f30804dc6
+### Find
+You can use the find() function for queries and projection.
+Similar to WHERE and SELECT in SQL.
+```
+school> db.students.find({age:32},{name:true})
+[ { _id: ObjectId("652c3eec3f0549a30df74c2e"), name: 'Larry' } ]
+```
+```
+school> db.students.find({age:32},{name:true,_id:false})
+[ { name: 'Larry' } ]
+```
