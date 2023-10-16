@@ -12,7 +12,8 @@ To drop the database:
 ```school> db.students.insertOne({name:"Spongebob",age:21,gpa:3.2})```
 
 To view the documents:
-```school> db.students.find()
+```
+school> db.students.find()
 [  
   {
     _id: ObjectId("652c3d933f0549a30df74c2b"),
@@ -24,7 +25,9 @@ To view the documents:
 ```
 
 Inserting Many:
-```school> db.students.insertMany([{name:"Patrick",age:22,gpa:2.7},{name:"Squidward",age:33,gpa:3.5}])```
+```
+school> db.students.insertMany([{name:"Patrick",age:22,gpa:2.7},{name:"Squidward",age:33,gpa:3.5}])
+```
 
 All documents in the collection need not have the same keys. You can also store values as the date, null - for placeholder, array or list and nested document
 ```
@@ -56,4 +59,24 @@ school> db.students.find({age:32},{name:true})
 ```
 school> db.students.find({age:32},{name:true,_id:false})
 [ { name: 'Larry' } ]
+```
+### Update documents
+First {} is to filter, second {} is to apply the update(s)
+#### Update One
+Example, to update the age of a student. If the given key does not exist, it will be created.
+```
+school> db.students.updateOne({name:"Spongebob"},{$set:{age:25}})
+```
+To delete a key in a document, where the key "isFullTime" will be deleted
+```
+school> db.students.updateOne({name:"Spongebob"},{$unset:{isFullTime:""}})
+```
+#### Update Many
+If you leave the filter query blank, updates will apply to all documents
+```
+school> db.students.updateMany({},{$set:{isFullTime:false}})
+```
+Example, check if any of the documents have the "isFullTime" key and apply updates to only those documents
+```
+school> db.students.updateMany({isFullTime:{$exists:false}}, {$set:{isFullTime:true}})
 ```
