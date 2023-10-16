@@ -80,3 +80,15 @@ Example, check if any of the documents have the "isFullTime" key and apply updat
 ```
 school> db.students.updateMany({isFullTime:{$exists:false}}, {$set:{isFullTime:true}})
 ```
+### Delete documents
+You put in a filter criteria in {}
+#### Delete One
+Deleting the student whose name is "SpongeBob"
+```
+school> db.students.deleteOne({name:"SpongeBob"})
+```
+#### Delete Many
+Deleting all students who do not have the key - "registrationDate"
+```
+school> db.students.deleteMany({registrationDate:{$exists:false}})
+```
