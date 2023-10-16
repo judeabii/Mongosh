@@ -21,3 +21,24 @@ To view the documents:
 ]```
 Inserting Many:
 ```school> db.students.insertMany([{name:"Patrick",age:22,gpa:2.7},{name:"Squidward",age:33,gpa:3.5}])```
+
+All documents in the collection need not have the same keys. You can also store values as the date, null - for placeholder, array or list and nested document
+```
+school> db.students.insertOne({name:"Larry",
+... age:32,
+... gpa:2.8,
+... isFullTime:false,
+... registerDate:new Date(),
+... graduationDate:null,
+... courses:["Biology","Chemistry","Math"],
+... address:{street:"Nick street",
+... city:"Bottom",
+... zipCode:123456}
+... })
+```
+### Sorting and Limit
+"1" to sort in ascending order and "-1" for descending order.
+You can limit the number of results obtained too, eg, onlt the top 2 youngest students:
+```
+school> db.students.find().sort({age:1}).limit(2)
+```
