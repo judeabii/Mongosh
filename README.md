@@ -104,3 +104,10 @@ Multiple comparision operators in one statement
 ```
 school> db.students.find({gpa:{$gt:3,$lte:4}}, {name:true})
 ```
+#### In and Not in 
+```
+school> db.students.find({name:{$in:["Spongebob","Patrick"]}})
+```
+```
+school> db.students.find({name:{$nin:["Spongebob","Patrick","Sandy"]}})
+```
