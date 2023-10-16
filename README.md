@@ -3,12 +3,14 @@ A journal to document the learning od MongoDB using mongosh
 ### Creating a deleting a database
 To create a database, where the name of the database is school:
 ```test> use school```
+
 To drop the database:
 ```school> db.dropDatabase()```
 ### Create a collection
 ```school> db.createCollection("students")```
 ### Inserting documents into a collection
 ```school> db.students.insertOne({name:"Spongebob",age:21,gpa:3.2})```
+
 To view the documents:
 ```school> db.students.find()
 [  
@@ -18,9 +20,12 @@ To view the documents:
     age: 21,
     gpa: 3.2
   }
-]```
+]
+```
+
 Inserting Many:
 ```school> db.students.insertMany([{name:"Patrick",age:22,gpa:2.7},{name:"Squidward",age:33,gpa:3.5}])```
+<<<<<<< HEAD
 
 All documents in the collection need not have the same keys. You can also store values as the date, null - for placeholder, array or list and nested document
 ```
@@ -42,3 +47,5 @@ You can limit the number of results obtained too, eg, onlt the top 2 youngest st
 ```
 school> db.students.find().sort({age:1}).limit(2)
 ```
+=======
+>>>>>>> f4d6f301b7ac0d9f1ce6f0e9882e4e0f30804dc6
