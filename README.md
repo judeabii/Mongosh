@@ -111,3 +111,33 @@ school> db.students.find({name:{$in:["Spongebob","Patrick"]}})
 ```
 school> db.students.find({name:{$nin:["Spongebob","Patrick","Sandy"]}})
 ```
+### Logical Operators
+#### AND
+All the conditions have to be true
+```
+school> db.students.find({$and:[{age:{$gte:22}},{isFullTime:true}]})
+[  
+  {
+    _id: ObjectId("652c3e0e3f0549a30df74c2d"),
+    name: 'Squidward',
+    age: 33,
+    gpa: 3.5,
+    isFullTime: true
+  }
+]
+```
+#### OR
+Either one of the conditions should be true
+```
+school> db.students.find({$or:[{age:{$gte:22}},{isFullTime:true}]})
+```
+#### NOR
+All the conditions need to be false
+```
+school> db.students.find({$nor:[{age:{$lte:22}},{isFullTime:true}]})
+```
+#### NOT
+Returns any document(s) which doesn't satisfy the condition (including null)
+```
+school> db.students.find({age:{$not:{$gte:30}}})
+```
